@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helisim"
+version = "0.1.0"
+description = "Open helicopter simulator for AFCS outer-loop modes: Mark on Target, Approach 1 and Approach 2 to hover, with Dryden turbulence."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Ruben Colomina" }]
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22", "matplotlib>=3.5"]
+keywords = ["helicopter", "flight simulation", "AFCS", "control theory", "autopilot", "Dryden turbulence"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+helisim = "helisim.__main__:main"
+
+[tool.setuptools]
+packages = ["helisim"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
