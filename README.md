@@ -67,35 +67,6 @@ tr = run_mark_on_target(SimConfig(wind_from_deg=300, wind_speed_kt=20, turbulenc
 plot_3d(tr, "mot.png")
 ```
 
-## Explainer video (Manim)
-
-The `video/` folder holds the Manim source of an animated explainer of the maths behind the simulator (the rendered video is not published here): the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
-
-```bash
-pip install manim kokoro-onnx soundfile     # Manim needs LaTeX, dvisvgm and Pango on the system
-cd video
-NOFADE=1 manim -s -r 1920,1080 scenes.py S08MarkOnTarget3D   # preview one scene's last frame
-./render.sh                                                  # silent version: render all scenes and join them
-
-# narrated version: Kokoro voice model files from
-# https://github.com/thewh1teagle/kokoro-onnx/releases (model-files-v1.0)
-python narration.py --model kokoro-v1.0.onnx --voices voices-v1.0.bin --out audio/
-./render_voiced.sh    # stretches each scene to its narration, muxes the voice and joins the scenes
-```
-
-**In your own voice** (kNN-VC voice conversion, weights from GitHub releases, same workflow as in my math-papers videos):
-
-```bash
-pip install torch torchaudio soundfile
-git clone https://github.com/bshall/knn-vc ~/vc/knn-vc
-python clone_voice.py --ref voice_ref/my_voice.wav --knnvc ~/vc/knn-vc   # converts audio/*.wav, keeps audio/stock/
-./render_voiced.sh
-```
-
-`render_voiced.sh` also writes `narration.srt`, adds it as a soft subtitle track, and makes `flying_on_feedback_narrated_captioned.mp4` with burned-in captions in a band below the picture (for feeds that autoplay muted).
-
-The narration text lives in `video/narration.py`; edit it, regenerate the audio and the scenes re-time themselves.
-
 ## Project layout
 
 ```
@@ -108,7 +79,6 @@ helisim/
   plotting.py   3D trajectory, ground track, speed/height/heading profiles
 tests/          pytest suite (also run in GitHub Actions)
 examples/       script that reproduces the article figures
-video/          Manim scenes and render script for the explainer video
 ```
 
 ## Disclaimer
