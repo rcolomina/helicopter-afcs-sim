@@ -4,3 +4,5 @@ __pycache__/
 out*/
 *.pyc
 .venv/
+video/media/
+video/*.mp4

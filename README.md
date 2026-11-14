@@ -67,6 +67,17 @@ tr = run_mark_on_target(SimConfig(wind_from_deg=300, wind_speed_kt=20, turbulenc
 plot_3d(tr, "mot.png")
 ```
 
+## Explainer video (Manim)
+
+[`docs/flying_on_feedback.mp4`](docs/flying_on_feedback.mp4) is a 2-minute animated explainer of the maths behind the simulator: the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
+
+```bash
+pip install manim            # needs LaTeX, dvisvgm and Pango on the system
+cd video
+NOFADE=1 manim -s -r 1920,1080 scenes.py S08MarkOnTarget3D   # preview one scene's last frame
+./render.sh                                                  # render all scenes and join them
+```
+
 ## Project layout
 
 ```
@@ -79,6 +90,7 @@ helisim/
   plotting.py   3D trajectory, ground track, speed/height/heading profiles
 tests/          pytest suite (also run in GitHub Actions)
 examples/       script that reproduces the article figures
+video/          Manim scenes and render script for the explainer video
 ```
 
 ## Disclaimer
