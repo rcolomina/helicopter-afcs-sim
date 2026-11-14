@@ -12,3 +12,4 @@ video/*.onnx
 video/*.bin
 video/voice_ref/
 video/narration.srt
+docs/*.mp4

@@ -69,7 +69,7 @@ plot_3d(tr, "mot.png")
 
 ## Explainer video (Manim)
 
-[`docs/flying_on_feedback.mp4`](docs/flying_on_feedback.mp4) is a narrated 3½-minute animated explainer of the maths behind the simulator: the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
+The `video/` folder holds the Manim source of an animated explainer of the maths behind the simulator (the rendered video is not published here): the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
 
 ```bash
 pip install manim kokoro-onnx soundfile     # Manim needs LaTeX, dvisvgm and Pango on the system
