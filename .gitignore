@@ -6,3 +6,7 @@ out*/
 .venv/
 video/media/
 video/*.mp4
+video/audio/
+video/media_voiced/
+video/*.onnx
+video/*.bin

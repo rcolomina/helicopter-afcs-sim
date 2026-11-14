@@ -69,14 +69,21 @@ plot_3d(tr, "mot.png")
 
 ## Explainer video (Manim)
 
-[`docs/flying_on_feedback.mp4`](docs/flying_on_feedback.mp4) is a 2-minute animated explainer of the maths behind the simulator: the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
+[`docs/flying_on_feedback.mp4`](docs/flying_on_feedback.mp4) is a narrated 3½-minute animated explainer of the maths behind the simulator: the feedback loop, first-order lags, layered SAS/trim/autopilot, turn geometry, line-capture guidance, the Approach 2 speed and height schedule, the full Mark on Target manoeuvre in 3D (flown by `helisim`) and the Wiener/Dryden turbulence.
 
 ```bash
-pip install manim            # needs LaTeX, dvisvgm and Pango on the system
+pip install manim kokoro-onnx soundfile     # Manim needs LaTeX, dvisvgm and Pango on the system
 cd video
 NOFADE=1 manim -s -r 1920,1080 scenes.py S08MarkOnTarget3D   # preview one scene's last frame
-./render.sh                                                  # render all scenes and join them
+./render.sh                                                  # silent version: render all scenes and join them
+
+# narrated version: Kokoro voice model files from
+# https://github.com/thewh1teagle/kokoro-onnx/releases (model-files-v1.0)
+python narration.py --model kokoro-v1.0.onnx --voices voices-v1.0.bin --out audio/
+./render_voiced.sh    # stretches each scene to its narration, muxes the voice and joins the scenes
 ```
+
+The narration text lives in `video/narration.py`; edit it, regenerate the audio and the scenes re-time themselves.
 
 ## Project layout
 
