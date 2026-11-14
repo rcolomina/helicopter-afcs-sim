@@ -10,3 +10,4 @@ video/audio/
 video/media_voiced/
 video/*.onnx
 video/*.bin
+video/voice_ref/

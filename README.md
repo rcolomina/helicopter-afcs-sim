@@ -83,6 +83,15 @@ python narration.py --model kokoro-v1.0.onnx --voices voices-v1.0.bin --out audi
 ./render_voiced.sh    # stretches each scene to its narration, muxes the voice and joins the scenes
 ```
 
+**In your own voice** (kNN-VC voice conversion, weights from GitHub releases, same workflow as in my math-papers videos):
+
+```bash
+pip install torch torchaudio soundfile
+git clone https://github.com/bshall/knn-vc ~/vc/knn-vc
+python clone_voice.py --ref voice_ref/my_voice.wav --knnvc ~/vc/knn-vc   # converts audio/*.wav, keeps audio/stock/
+./render_voiced.sh
+```
+
 The narration text lives in `video/narration.py`; edit it, regenerate the audio and the scenes re-time themselves.
 
 ## Project layout
