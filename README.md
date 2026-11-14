@@ -92,6 +92,8 @@ python clone_voice.py --ref voice_ref/my_voice.wav --knnvc ~/vc/knn-vc   # conve
 ./render_voiced.sh
 ```
 
+`render_voiced.sh` also writes `narration.srt`, adds it as a soft subtitle track, and makes `flying_on_feedback_narrated_captioned.mp4` with burned-in captions in a band below the picture (for feeds that autoplay muted).
+
 The narration text lives in `video/narration.py`; edit it, regenerate the audio and the scenes re-time themselves.
 
 ## Project layout
